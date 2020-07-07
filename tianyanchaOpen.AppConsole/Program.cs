@@ -8,8 +8,6 @@ namespace tianyanchaOpen.AppConsole
         {
 
 
-
-
             Console.WriteLine("Hello World!");
         }
     }

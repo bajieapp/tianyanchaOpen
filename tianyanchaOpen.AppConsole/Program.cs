@@ -6,9 +6,13 @@ namespace tianyanchaOpen.AppConsole
     {
         static void Main(string[] args)
         {
+            HttpClientHelper.Host = "https://open.tianyancha.com";
 
+            var httpResult = HttpClientHelper.Get<dynamic>("/cloud-open-admin/_feign/interface/find.json?parentId=1000&opened=1");
 
-            Console.WriteLine("Hello World!");
+            Console.WriteLine(httpResult);
+
+            Console.ReadLine();
         }
     }
 }

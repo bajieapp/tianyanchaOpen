@@ -75,6 +75,30 @@ namespace tianyanchaOpen.AppConsole
             return JsonSerializer.Deserialize<T>(content);
         }
 
+
+        /// <summary>
+        /// Get
+        /// </summary>
+        public static string Get(string url)
+        {
+            //头文件
+            if (!string.IsNullOrEmpty(Token))
+            {
+                _HttpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Token);  //Token
+            }
+            //Get
+            string address = $"{Host}{url}";
+            var getResult = _HttpClient.GetAsync(address).Result;
+            //Get失败
+            if (getResult.StatusCode != HttpStatusCode.OK)
+            {
+                throw new Exception($"通讯网址：{address}\r\n通讯错误：{getResult.StatusCode.ToString()}({(int)getResult.StatusCode})");
+            }
+            //Get成功
+            var content = getResult.Content.ReadAsStringAsync().Result;
+            return content;
+        }
+
         /// <summary>
         /// Get
         /// </summary>

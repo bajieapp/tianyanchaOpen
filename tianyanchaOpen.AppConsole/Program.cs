@@ -42,7 +42,7 @@ namespace tianyanchaOpen.AppConsole
             Core core = new Core();
             core.LoadRoot().LoadParent();
 
-           var result= core.RootDTOs;
+            var result = core.RootDTOs;
 
             Console.ReadLine();
         }
